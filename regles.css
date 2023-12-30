@@ -1,0 +1,65 @@
+body {
+    background-image: url(08696535.jpg);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    
+}
+
+/* Style du conteneur des règles */
+.rules-container {
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Style du titre des règles */
+h1 {
+    color: #3498db;
+    text-align: center;
+}
+
+/* Style des paragraphes des règles */
+p {
+    margin-bottom: 15px;
+    text-align: center;
+    
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: bolder
+}
+
+/* Style de la liste ordonnée des règles */
+ol {
+    margin-left: 20px;
+}
+
+/* Style des éléments de la liste ordonnée des règles */
+li {
+    margin-bottom: 8px;
+}
+
+/* Style du pied de page */
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+    text-align: center;
+    
+}
+
+button{
+    text-align: left;
+}

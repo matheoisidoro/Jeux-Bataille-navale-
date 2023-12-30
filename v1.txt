@@ -1,0 +1,95 @@
+html : 
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bataille Navale</title>
+</head>
+<body>
+
+<h2>Téléchargement de fichier</h2>
+<button onclick="telechargerFichier()">Télécharger</button>
+<div id="progressBarContainer">
+    <div id="progressBar"></div>
+    <span id="pourcentage">0%</span>
+</div>
+
+<script src="style.js"></script>
+
+</body>
+</html>
+
+CSS : 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+#downloadBtn, #rulesBtn {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#downloadBtn:hover, #rulesBtn:hover {
+  background-color: #ddd;
+}
+
+#loadingBar {
+  display: none;
+  width: 50%;
+  margin-top: 20px;
+  border: 2px solid #4caf50;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+#progressBar {
+  height: 30px;
+  width: 0;
+  background-color: #4caf50;
+  border-radius: 5px;
+}
+
+
+js :
+
+function telechargerFichier() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'chemin/vers/votre/fichier.py', true);
+    xhr.responseType = 'blob';
+
+    xhr.onprogress = function (event) {
+        if (event.lengthComputable) {
+            var pourcentage = (event.loaded / event.total) * 100;
+            document.getElementById('progressBar').style.width = pourcentage + '%';
+            document.getElementById('pourcentage').innerHTML = Math.round(pourcentage) + '%';
+        }
+    };
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var blob = new Blob([xhr.response], { type: 'application/python' });
+            var url = window.URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'programme_équation du second degré.py';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    };
+
+    xhr.send();
+}
+
